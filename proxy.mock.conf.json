@@ -1,0 +1,7 @@
+{
+  "/password-reset/*": {
+    "target": "http://localhost:8084/",
+    "logLevel": "debug",
+    "secure": false
+  }
+}

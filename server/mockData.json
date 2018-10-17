@@ -1,0 +1,11 @@
+{
+  "endpoints": {
+    "configUrl": "/password-reset/1.0/ui/config",
+    "captchaSiteKeyUrl": "/dev/ecp/webapp-resources/v1/captcha",
+    "iovationUrl": "/dev/ecp/webapp-resources/v1/iovationUrl",
+    "iovationScriptUrl": "https://ci-mpsnare.iovation.com/snare.js"
+  },
+  "keys": {
+    "siteKey": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+  }
+}

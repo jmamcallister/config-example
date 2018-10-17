@@ -1,0 +1,21 @@
+<p>
+  verify-identity works!
+</p>
+
+<form>
+
+  <p>
+    <label>
+      Email:
+      <input type="email" [formControl]="email" [formGroup]="identityForm">
+    </label>
+  </p>
+
+  <div [formGroup]="identityForm">
+    <re-captcha [formControl]="captcha" siteKey="{{ reCaptchaService.captchaSiteKey | async }}" (resolved)="captchaResolved($event)"></re-captcha>
+  </div>
+
+  <p>
+    <button (click)="submitEmail()">Continue</button>
+  </p>
+</form>
