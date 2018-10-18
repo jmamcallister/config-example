@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfigService } from '../shared/services/config.service';
 import { ReCaptchaService } from '../shared/services/re-captcha.service';
+import { IovationService } from '../shared/services/iovation.service';
 
 @Component({
   selector: 'app-verify-identity',
@@ -15,7 +16,11 @@ export class VerifyIdentityComponent implements OnInit {
   identityForm: FormGroup;
   captchaToken: string;
 
-  constructor(private configService: ConfigService, public reCaptchaService: ReCaptchaService) { }
+  constructor(
+    private configService: ConfigService,
+    private iovationService: IovationService,
+    public reCaptchaService: ReCaptchaService
+  ) { }
 
   ngOnInit() {
     this.email = new FormControl('', Validators.required);
@@ -24,12 +29,15 @@ export class VerifyIdentityComponent implements OnInit {
       email: this.email,
       captcha: this.captcha
     });
+    this.iovationService.initIovation();
   }
 
   captchaResolved(token: string) {
     this.captchaToken = token || 'invalid-token';
   }
+
   submitEmail() {
     console.log('submitting email ' + this.email.value);
+    console.log('iovation blackbox value: ' + this.iovationService.getBlackBoxValue());
   }
 }

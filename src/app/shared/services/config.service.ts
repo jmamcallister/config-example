@@ -12,11 +12,14 @@ export class ConfigService {
   private loaded = false;
   private configuration: any;
 
-  constructor(private http: HttpClient) { }
 
-  public getConfig(): any {
-    return this.configuration;
+  static getBaseUrl(key: string, configuration: any): string {
+    return configuration[key].protocol + '://' +
+      configuration[key].host + ':' +
+      configuration[key].port;
   }
+
+  constructor(private http: HttpClient) { }
 
   public load(): Promise<any> {
     if (this.loaded) {
@@ -36,5 +39,8 @@ export class ConfigService {
       );
       return configurationObservable.toPromise();
     }
+  }
+  public getConfig(): any {
+    return this.configuration;
   }
 }

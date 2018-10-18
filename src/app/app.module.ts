@@ -16,6 +16,8 @@ import { ReCaptchaSiteKeyResolver } from './shared/services/re-captcha-site-key-
 import { ReCaptchaService } from './shared/services/re-captcha.service';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { IovationService } from './shared/services/iovation.service';
+import { IovationUrlResolver } from './shared/services/iovation-url-resolver';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,10 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
   ],
   providers: [
     ConfigService,
-    ReCaptchaSiteKeyResolver,
+    IovationService,
+    IovationUrlResolver,
     ReCaptchaService,
+    ReCaptchaSiteKeyResolver,
     { provide: APP_INITIALIZER, useFactory: configurationServiceInitializerFactory, deps: [ConfigService], multi: true }
   ],
   bootstrap: [AppComponent]
